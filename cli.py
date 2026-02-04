@@ -1,36 +1,41 @@
 import argparse
-from omnicore.core.app import OmniApp
+import os
+
+PROJECT_TEMPLATE = """from omnicore.core.app import OmniApp
+
+app = OmniApp("{name}")
+
+if __name__ == "__main__":
+    app.start()
+    print("App running")
+    app.stop()
+"""
+
+def init_project(name):
+    os.makedirs(name, exist_ok=True)
+    with open(os.path.join(name, "main.py"), "w") as f:
+        f.write(PROJECT_TEMPLATE.format(name=name))
+    with open(os.path.join(name, "config.yaml"), "w") as f:
+        f.write("app:\n  name: {}\n".format(name))
+    print(f"✔ Project '{name}' created")
+
+def run_project():
+    os.system("python main.py")
 
 def main():
-    parser = argparse.ArgumentParser(prog="omnicore")
-    sub = parser.add_subparsers(dest="command")
+    parser = argparse.ArgumentParser("omnicore")
+    sub = parser.add_subparsers(dest="cmd")
 
-    init_cmd = sub.add_parser("init")
-    init_cmd.add_argument("name")
+    init = sub.add_parser("new")
+    init.add_argument("name")
 
-    run_cmd = sub.add_parser("run")
-    run_cmd.add_argument("name")
+    run = sub.add_parser("run")
 
     args = parser.parse_args()
 
-    if args.command == "init":
+    if args.cmd == "new":
         init_project(args.name)
-    elif args.command == "run":
-        run_app(args.name)
+    elif args.cmd == "run":
+        run_project()
     else:
         parser.print_help()
-
-def init_project(name):
-    print(f"Initializing OmniCore project: {name}")
-    with open("main.py", "w") as f:
-        f.write(
-            "from omnicore.core.app import OmniApp\n\n"
-            f"app = OmniApp('{name}')\n"
-            "app.start()\n"
-            "app.stop()\n"
-        )
-
-def run_app(name):
-    app = OmniApp(name)
-    app.start()
-    app.stop()

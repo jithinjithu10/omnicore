@@ -1,0 +1,6 @@
+[project]
+name = "omnicore"
+version = "0.1.0"
+description = "A modular, scalable core framework for adaptable applications"
+authors = [{name="Your Name"}]
+requires-python = ">=3.8"

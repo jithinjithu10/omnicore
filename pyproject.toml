@@ -1,14 +1,23 @@
 [build-system]
-requires = ["setuptools", "wheel"]
+requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "omnicore"
-version = "0.1.0"
-description = "A scalable, flexible, portable core framework for adaptable applications"
-authors = [{ name = "Your Name" }]
+version = "1.0.0"
+description = "A modular, scalable, and portable application runtime framework"
 readme = "README.md"
 requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+  { name = "Your Name" }
+]
+keywords = ["framework", "runtime", "platform", "scalable"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent"
+]
 
 [project.scripts]
 omnicore = "omnicore.cli:main"

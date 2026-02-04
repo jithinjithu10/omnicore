@@ -92,26 +92,26 @@ sequenceDiagram
 ---
 
 ## Installation
-
+```bash
 pip install omnicore
-
+```
 ---
 
 ## Quick Start
 
 Create a new project
-
+```bash
 omnicore new myapp
 cd myapp
-
+```
 Run the application
-
+```bash
 omnicore run
-
+```
 ---
 
 ## Minimal Example
-
+```bash
 from omnicore.core.app import OmniApp
 from omnicore.modules.health import HealthModule
 
@@ -123,11 +123,11 @@ app.add_module(health)
 app.start()
 print(health.check())
 app.stop()
-
+```
 ---
 
 ## Async Task Engine Example
-
+```bash
 import asyncio
 from omnicore.runtime.tasks import TaskEngine
 
@@ -142,7 +142,7 @@ async def main():
     await engine.stop()
 
 asyncio.run(main())
-
+```
 ---
 
 ## Plugin System
@@ -165,13 +165,13 @@ Registering a plugin using pyproject.toml:
 my_plugin = "mypackage.plugin:MyPlugin"
 
 Plugin structure:
-
+```bash
 class MyPlugin:
     name = "my-plugin"
 
     def register(self, app):
         pass
-
+```
 ---
 
 ## Configuration System
@@ -277,12 +277,6 @@ omnicore/
 ## License
 
 MIT License
-EADME.md…]()
-
-- Lifecycle Management
-- Module System
-- Environment Adapters
-- Extension Interfaces
 
 ## Installation
 

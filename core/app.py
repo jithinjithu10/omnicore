@@ -2,6 +2,7 @@
 from omnicore.core.lifecycle import LifecycleManager
 from omnicore.core.container import ServiceContainer
 from omnicore.core.runtime import RuntimeContext
+import asyncio
 
 class OmniApp:
     def __init__(self, name: str):
@@ -10,10 +11,10 @@ class OmniApp:
         self.lifecycle = LifecycleManager()
         self.runtime = RuntimeContext(name)
 
-    def start(self):
-        self.runtime.mark_start()
-        self.lifecycle.start_all()
+def start(self):
+    self.runtime.mark_start()
+    asyncio.run(self.lifecycle.start_all())
 
-    def stop(self):
-        self.lifecycle.stop_all()
-        self.runtime.mark_stop()
+def stop(self):
+    asyncio.run(self.lifecycle.stop_all())
+    self.runtime.mark_stop()

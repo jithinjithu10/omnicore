@@ -1,8 +1,16 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "omnicore"
 version = "0.1.0"
-description = "A modular, scalable core framework for adaptable applications"
-authors = [{name="Your Name"}]
+description = "A scalable, flexible, portable core framework for adaptable applications"
+authors = [{ name = "Your Name" }]
+readme = "README.md"
 requires-python = ">=3.8"
+
 [project.scripts]
 omnicore = "omnicore.cli:main"
+
+[project.entry-points."omnicore.plugins"]
